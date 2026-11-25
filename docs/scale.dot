@@ -1,0 +1,30 @@
+digraph S {
+  rankdir=LR; fontname="Helvetica"; nodesep=0.3; ranksep=0.55;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, fillcolor="#eef2ff", color="#6366f1"];
+  edge [fontname="Helvetica", fontsize=9, color="#475569"];
+  label="Production Architecture - scaling to 1,00,000 users"; labelloc=t; fontsize=16;
+  callers [label="Callers\n(PSTN / WebRTC / App)", fillcolor="#e0f2fe"];
+  tel [label="Telephony\nExotel / Plivo / Twilio\nSIP + Media Streams", fillcolor="#e0f2fe"];
+  lb  [label="API Gateway + Load Balancer\nTLS, auth, rate limits, WAF"];
+  subgraph cluster_k8s { label="Kubernetes / ECS (auto-scaling, stateless)"; style="rounded"; color="#6366f1";
+    gw   [label="Voice Gateway pods\nWebSocket audio streaming\nVAD + barge-in", fillcolor="#c7d2fe"];
+    ag   [label="Agent pods\n(FastAPI orchestrator)", fillcolor="#c7d2fe"];
+    wk   [label="Worker pods\n(Celery / SQS consumers)\nsummaries, CRM sync, analytics"];
+    crmapi[label="CRM SaaS API\n(multi-tenant)"];
+  }
+  stt [label="Streaming STT\nDeepgram / Google", fillcolor="#fef9c3", color="#ca8a04"];
+  llm [label="LLM router\nGemini Flash -> fallback\nOpenAI / Groq\n+ semantic cache", fillcolor="#dcfce7", color="#16a34a"];
+  tts [label="Streaming TTS\nElevenLabs / Azure / Edge", fillcolor="#fef9c3", color="#ca8a04"];
+  redis [label="Redis\nlive call state,\nsessions, cache", shape=cylinder, fillcolor="#fee2e2", color="#dc2626"];
+  pg [label="PostgreSQL (RDS)\nrow-level security per tenant\n+ read replicas", shape=cylinder, fillcolor="#f1f5f9"];
+  vec [label="pgvector / Pinecone\nper-tenant namespaces", shape=cylinder, fillcolor="#f1f5f9"];
+  q [label="Queue\nSQS / RabbitMQ", shape=cds, fillcolor="#f1f5f9"];
+  ext [label="External CRMs & calendars\nHubSpot, Zoho, Salesforce,\nGoogle Calendar, WhatsApp", fillcolor="#e0f2fe"];
+  obs [label="Observability\nPrometheus, Grafana,\nper-stage latency, cost/call", fillcolor="#f1f5f9"];
+  s3 [label="S3\nencrypted recordings\n+ transcripts", shape=cylinder, fillcolor="#f1f5f9"];
+
+  callers -> tel -> gw; callers -> lb -> gw; lb -> crmapi;
+  gw -> stt -> ag; ag -> llm; ag -> tts -> gw;
+  ag -> redis; ag -> vec; ag -> pg; ag -> q -> wk; wk -> llm [style=dashed]; wk -> pg; wk -> ext; wk -> s3;
+  crmapi -> pg; ag -> obs [style=dotted]; gw -> obs [style=dotted];
+}

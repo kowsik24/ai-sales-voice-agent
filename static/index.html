@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Call · AI Sales Voice Agent</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2377777D' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8z"/></symbol>
+  <symbol id="i-hang" viewBox="0 0 24 24"><path d="M3 15.5c2.5-2.7 5.6-4 9-4s6.5 1.3 9 4l-2.3 2.3a1 1 0 0 1-1.3.1l-2.6-1.9a1 1 0 0 1-.4-.9l.2-2.1a12 12 0 0 0-5.2 0l.2 2.1a1 1 0 0 1-.4.9l-2.6 1.9a1 1 0 0 1-1.3-.1z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-req" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3v3a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+</svg>
+<div class="app">
+  <!-- ============ Sidebar ============ -->
+  <aside class="sidebar">
+    <div class="logo"><svg class="ic"><use href="#i-wave"/></svg><span>AI Sales<br>Voice Agent</span></div>
+    <nav class="nav">
+      <a href="/" class="active"><svg class="ic"><use href="#i-home"/></svg><span>Dashboard</span></a>
+      <a href="/dashboard#leads"><svg class="ic"><use href="#i-users"/></svg><span>Leads</span></a>
+      <a href="/dashboard#calls"><svg class="ic"><use href="#i-phone"/></svg><span>Calls</span></a>
+      <a href="/dashboard#pipeline"><svg class="ic"><use href="#i-layers"/></svg><span>Pipeline</span></a>
+      <a href="/dashboard"><svg class="ic"><use href="#i-chart"/></svg><span>Analytics</span></a>
+      <a href="/docs" target="_blank"><svg class="ic"><use href="#i-settings"/></svg><span>Settings</span></a>
+    </nav>
+    <div class="side-foot" id="modes"></div>
+  </aside>
+
+  <main class="content">
+    <!-- ============ Top bar ============ -->
+    <div class="topbar">
+      <div class="org"><svg class="ic"><use href="#i-building"/></svg><span id="company">GreenNest Residences</span><svg class="ic chev"><use href="#i-chev"/></svg></div>
+      <span class="grow"></span>
+      <span class="pill hide-sm" id="livePill"><span class="led"></span><span id="liveText">Idle</span></span>
+      <button class="btn-primary" id="liveCallBtn"><svg class="ic"><use href="#i-phone"/></svg>Live Call</button>
+      <button class="iconbtn notif" title="Notifications"><svg class="ic"><use href="#i-bell"/></svg></button>
+      <div class="avatar" id="avatar">SA</div>
+    </div>
+
+    <div class="greet">
+      <h1 id="greeting">Hello 👋</h1>
+      <p>Here's your AI sales performance for today.</p>
+    </div>
+
+    <!-- ============ KPIs (live from CRM) ============ -->
+    <div class="kpis">
+      <div class="kpi"><div class="tile"><svg class="ic"><use href="#i-phone"/></svg></div>
+        <div><div class="label">Calls Handled</div><div class="value" id="k-calls">0</div><div class="meta" id="k-calls-m">by the AI agent</div></div></div>
+      <div class="kpi"><div class="tile"><svg class="ic"><use href="#i-users"/></svg></div>
+        <div><div class="label">Qualified Leads</div><div class="value" id="k-qual">0</div><div class="meta" id="k-qual-m">Hot + Warm</div></div></div>
+      <div class="kpi"><div class="tile"><svg class="ic"><use href="#i-layers"/></svg></div>
+        <div><div class="label">Pipeline Value</div><div class="value" id="k-pipe">₹0</div><div class="meta">sum of lead budgets</div></div></div>
+      <div class="kpi"><div class="tile"><svg class="ic"><use href="#i-cal"/></svg></div>
+        <div><div class="label">Site Visits Booked</div><div class="value" id="k-visits">0</div><div class="meta" id="k-visits-m">conversion 0%</div></div></div>
+    </div>
+
+    <!-- ============ Workspace ============ -->
+    <div class="workspace">
+      <!-- Live call -->
+      <section class="card" id="callCard">
+        <div class="call-head">
+          <div>
+            <h2><span class="dot" id="dot"></span>Live Call – AI Sales Agent</h2>
+            <div class="call-sub"><span id="statusText">Ready</span> · <span id="timer">00:00</span></div>
+          </div>
+          <div class="call-actions">
+            <button class="sq" id="micBtn" title="Talk / interrupt the agent" disabled><svg class="ic"><use href="#i-wave"/></svg></button>
+            <button class="sq" id="pauseBtn" title="Pause listening" disabled><svg class="ic"><use href="#i-pause"/></svg></button>
+            <button class="btn-primary" id="startBtn"><svg class="ic"><use href="#i-phone"/></svg>Start Call</button>
+            <button class="danger" id="endBtn" disabled><svg class="ic"><use href="#i-hang"/></svg>End Call</button>
+          </div>
+        </div>
+
+        <div class="controls">
+          <select id="language" title="Call language"></select>
+          <input type="tel" id="phone" placeholder="Caller phone (optional)">
+          <label class="toggle"><input type="checkbox" id="neural" checked> Neural voice</label>
+          <label class="toggle"><input type="checkbox" id="handsfree" checked> Hands-free</label>
+        </div>
+
+        <div class="transcript" id="transcript"></div>
+
+        <div class="suggest" id="suggest">
+          <button>What is the price of a 2 BHK?</button>
+          <button>My budget is only 50 lakhs</button>
+          <button>EMI for 20 years?</button>
+          <button>Can I pay in cash?</button>
+          <button>Can I visit the site this Saturday?</button>
+        </div>
+        <div class="typebar">
+          <input type="text" id="textInput" placeholder="Type what the caller says and press Enter…" disabled>
+          <button class="sq" id="sendBtn" title="Send" disabled><svg class="ic"><use href="#i-send"/></svg></button>
+        </div>
+      </section>
+
+      <!-- Right panel -->
+      <aside class="stack">
+        <div class="card">
+          <div class="card-title"><svg class="ic"><use href="#i-user"/></svg>Lead Details<span class="right badge Cold" id="category">Cold</span></div>
+          <div class="scoreline">
+            <div><span class="num" id="score">0</span><span class="of">/ 100</span></div>
+            <div class="bar"><span id="scoreBar" style="width:0%"></span></div>
+          </div>
+          <dl class="kv" id="leadFields"></dl>
+          <div id="appt"></div>
+          <details class="why"><summary>Why this score?</summary><ul class="plain" id="breakdown"></ul></details>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><svg class="ic"><use href="#i-spark"/></svg>Conversation Intelligence</div>
+          <dl class="kv">
+            <dt><svg class="ic"><use href="#i-smile"/></svg>Sentiment</dt><dd><span class="badge neutral" id="sentiment">Neutral</span></dd>
+            <dt><svg class="ic"><use href="#i-target"/></svg>Intent</dt><dd id="intent">–</dd>
+            <dt><svg class="ic"><use href="#i-timer"/></svg>Latency</dt><dd id="latency">–</dd>
+            <dt><svg class="ic"><use href="#i-cpu"/></svg>Engine</dt><dd id="engine">–</dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><svg class="ic"><use href="#i-book"/></svg>Knowledge Used (RAG)</div>
+          <ul class="plain" id="sources"><li class="small">Sources used for each answer appear here.</li></ul>
+        </div>
+
+        <div class="card" id="summaryCard" style="display:none">
+          <div class="card-title"><svg class="ic"><use href="#i-note"/></svg>AI Call Summary</div>
+          <div id="summary"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+<script src="/static/ui.js"></script>
+</body>
+</html>

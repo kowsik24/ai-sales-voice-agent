@@ -1,0 +1,35 @@
+digraph G {
+  rankdir=LR; fontname="Helvetica"; nodesep=0.35; ranksep=0.6;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, fillcolor="#eef2ff", color="#6366f1"];
+  edge [fontname="Helvetica", fontsize=9, color="#475569"];
+  label="Autonomous AI Sales Voice Agent - MVP Architecture"; labelloc=t; fontsize=16;
+
+  subgraph cluster_client { label="Caller channels"; style="rounded,dashed"; color="#94a3b8";
+    browser [label="Web call UI\n(Chrome / Edge)\nMic + Speaker", fillcolor="#e0f2fe"];
+    phone   [label="Phone call\n(Twilio number)", fillcolor="#e0f2fe"];
+  }
+  stt [label="Speech-to-Text\nBrowser Web Speech API\n(Twilio <Gather> on phone)", fillcolor="#fef9c3", color="#ca8a04"];
+  tts [label="Text-to-Speech\nEdge Neural TTS\n(en / hi / te)\nfallback: browser voice", fillcolor="#fef9c3", color="#ca8a04"];
+
+  subgraph cluster_api { label="FastAPI backend (Python)"; style="rounded"; color="#6366f1";
+    api   [label="REST API\n/api/calls/start | message | end\n/twilio/voice | gather"];
+    orch  [label="Agent Orchestrator\n(agent.py)\ncontext memory + state", fillcolor="#c7d2fe"];
+    rag   [label="RAG Retriever\nGemini embeddings\nfallback: TF-IDF"];
+    score [label="Lead Qualification\nBANT score 0-100\nHot / Warm / Cold"];
+    book  [label="Booking Tool\nslot validation\nno double booking"];
+    summ  [label="Post-call Analytics\nsummary, outcome,\nobjections, next steps"];
+  }
+  llm [label="Google Gemini 2.5 Flash\nJSON output:\nreply + sentiment + intent\n+ extracted lead fields + action\n(fallback: rule-based agent)", fillcolor="#dcfce7", color="#16a34a"];
+  kb  [label="Knowledge base\n/knowledge/*.md\n(brochure, pricing, FAQ)", shape=folder, fillcolor="#f1f5f9"];
+  db  [label="CRM database\nSQLite (-> PostgreSQL)\nleads | calls | messages\n| appointments", shape=cylinder, fillcolor="#f1f5f9"];
+  dash[label="CRM Dashboard\nKPIs, leads, transcripts,\nbusiness insights", fillcolor="#e0f2fe"];
+
+  browser -> stt [label="voice"]; stt -> api [label="text"];
+  phone -> api [label="webhook"];
+  api -> orch; orch -> rag; rag -> kb [style=dashed];
+  orch -> llm [label="prompt + context"]; llm -> orch [label="JSON"];
+  orch -> score; orch -> book; orch -> db [label="save turn"];
+  score -> db; book -> db; summ -> llm [style=dashed]; api -> summ; summ -> db;
+  orch -> api -> tts [label="reply text"]; tts -> browser [label="audio"];
+  db -> dash;
+}
