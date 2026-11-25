@@ -1,0 +1,27 @@
+Autonomous AI Sales Voice Agent: Project Report
+Candidate: KRISHNA KOWSIK
+
+1. Business Problem
+Sales teams lose leads when inbound calls go unanswered or are handled inconsistently. Qualifying prospects, answering product questions, and booking meetings take time that could be spent closing deals.
+
+2. Solution
+NexaCloud AI is a prototype voice sales agent that handles a call from start to finish. It answers product questions from a knowledge base, captures and scores lead details using BANT (Budget, Authority, Need, Timeline), detects sentiment and objections, books non-conflicting appointments, and produces a call summary with a follow-up email.
+
+3. Technical Implementation
+Voice: Browser Web Speech API for speech-to-text and text-to-speech, with typed input as a fallback.
+Retrieval (RAG): A hybrid retriever combining BM25 lexical scoring with TF-IDF character n-gram cosine similarity, using scikit-learn with a pure-Python fallback.
+Qualification: Entity extraction for name, company, role, team size, budget, and timeline, with a BANT score from 0 to 100 labelled Hot, Warm, or Cold.
+Intelligence: Per-turn sentiment and objection detection.
+Memory and language: Session memory for each call, with language detection for English, Hindi, Spanish, French, and German.
+CRM: SQLite database storing leads, appointments (with a unique date and time constraint to prevent double-booking), call summaries, and a webhook outbox.
+Server: Python ThreadingHTTPServer with REST APIs and Server-Sent Events. It runs fully offline, with optional Gemini or OpenAI integration.
+Security: PII redaction in logs, and secrets kept in environment variables rather than in the repository.
+
+4. Scalability to 100,000 Users
+Move the stateless web tier behind a load balancer and run several instances. Replace SQLite with PostgreSQL, store sessions in Redis, and use a managed vector database for retrieval. Speech processing can move to a managed STT/TTS service, and CRM sync and webhooks can run through a job queue. 
+
+5. Commercial Feasibility
+The product can be priced per booked meeting or per seat. The main running costs are speech APIs, LLM tokens, hosting, and the database. These should be estimated for specific call volumes before any launch.
+
+6. Limitations and Next Steps
+The current build uses a rule-based offline engine by default. Next steps are to connect a live LLM, add telephony such as Twilio for real phone calls, build a production CRM connector, and add authentication.
